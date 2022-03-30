@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'purple',
     'green',
     'blue',
-    'black'
+    'cyan',
+    "pink"
   ]
 
   //The Tetrominoes
@@ -62,7 +63,14 @@ document.addEventListener('DOMContentLoaded', () => {
     [width, width+1, width+2, width*2+0]
     
   ]
-  const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino, RLTetromino]
+
+  const RZTetromino = [
+    [1,width,width+1,width*2+0],
+    [width+1, width*2+2,width*1,width*2+1],
+    [1,width,width+1,width*2+0],
+    [width+1, width*2+2,width*1,width*2+1]
+  ]
+  const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino, RLTetromino, RZTetromino]
 
   let currentPosition = 4
   let currentRotation = 0
@@ -213,7 +221,8 @@ document.addEventListener('DOMContentLoaded', () => {
     [1, displayWidth, displayWidth+1, displayWidth+2], //tTetromino
     [0, 1, displayWidth, displayWidth+1], //oTetromino
     [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1], //iTetromino
-    [1, displayWidth+1, displayWidth*2+1, 0-0] //RLTetromino
+    [1, displayWidth+1, displayWidth*2+1, 0-0], //RLTetromino
+    [1, displayWidth, displayWidth+1, displayWidth*2+0] //RZTetromino
   ]
 
   //display the shape in the mini-grid display
@@ -238,12 +247,13 @@ document.addEventListener('DOMContentLoaded', () => {
       //randomly select a Tetromino and its first rotation
       random = Math.floor(Math.random()*theTetrominoes.length)
       current = theTetrominoes[random][currentRotation]
-      squares.forEach( e => { if(e.classList.contains('tetromino')) {
-                                e.classList.remove('taken')
-                                e.classList.remove('tetromino')
-                                e.style.backgroundColor = ''
-                              }
-      })
+      for(let i=0; i<200; i++){
+        if(squares[i].classList.contains('tetromino') || squares[i].classList.contains('taken')){
+          squares[i].classList.remove('taken')
+          squares[i].classList.remove('tetromino')
+          squares[i].style.backgroundColor = ''
+        }
+      }
       pause()
     }
   })
