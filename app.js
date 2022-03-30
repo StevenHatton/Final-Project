@@ -247,12 +247,13 @@ document.addEventListener('DOMContentLoaded', () => {
       //randomly select a Tetromino and its first rotation
       random = Math.floor(Math.random()*theTetrominoes.length)
       current = theTetrominoes[random][currentRotation]
-      squares.forEach( e => { if(e.classList.contains('tetromino')) {
-                                e.classList.remove('taken')
-                                e.classList.remove('tetromino')
-                                e.style.backgroundColor = ''
-                              }
-      })
+      for(let i=0; i<200; i++){
+        if(squares[i].classList.contains('tetromino') || squares[i].classList.contains('taken')){
+          squares[i].classList.remove('taken')
+          squares[i].classList.remove('tetromino')
+          squares[i].style.backgroundColor = ''
+        }
+      }
       pause()
     }
   })
