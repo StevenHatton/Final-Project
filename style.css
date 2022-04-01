@@ -8,6 +8,8 @@
   display: flex;
   flex-wrap: wrap;
   background-color: yellow;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .outline {
@@ -24,7 +26,7 @@
 }
 
 .tetromino {
-  background-color: blue;
+  background-color: rgb(0, 60, 255);
 }
 
 
@@ -34,7 +36,7 @@
   height: 80px;
   display: flex;
   flex-wrap: wrap;
-  background-color: yellow;
+  background-color: rgb(43, 255, 0);
 }
 
 .mini-grid div {
@@ -42,3 +44,18 @@
   width: 20px;
 }
 
+p {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: medium;
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  font-size: larger;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#grad {
+  background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+}
