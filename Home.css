@@ -1,0 +1,50 @@
+h2 a:link { 
+	color: #139cc5; 
+}
+h2 a:visited {
+	color: #0d4151; 
+}
+h2 a:hover {
+	color: #77b3c6; 
+}
+h2 { 
+        font-weight: bold;
+        text-align: center;
+        font-size: 1.5em; 
+        padding-top: 10px;
+        float: left; 
+        width: 200px; 
+}
+h2 ul {
+    list-style-type: none;
+     padding-left: 0px;
+}
+h2 a {
+    text-decoration: none;
+}
+body { 
+	color: #221811;
+	font-family: Verdana, Arial, sans-serif;
+}
+
+header { 
+	background-color: #89857f;
+	height: 50px;
+	background-repeat: no-repeat;
+    text-align: center;
+}
+main { 
+	padding-left: 0em;
+	padding-right: 0em;
+	padding-bottom: 2em;
+	padding-top: 0em;
+	margin-left: 200px;
+}
+footer { 
+	background-color: gray;
+	font-size: .60em; 
+	font-style: italic;
+	text-align: center; 
+	padding-bottom: 10px; 
+	border: 2px solid #221811;
+}
