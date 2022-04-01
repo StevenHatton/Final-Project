@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //draw the Tetromino
   function draw() {
-
     //clear all outlined squares
     squares.forEach(index => {if(index.classList.contains('outline')) index.classList.remove('outline')})
 
@@ -100,16 +99,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function drawGhost() {
+    if(!gameStart) return;
     let drawn = false
-    let index = 180
+    let index = 0
     let ghost = current.map(x => {return x + index + (currentPosition % width)})
     while(!drawn){
       if(ghost.some(i => squares[i].classList.contains('taken'))){
         index -= width
         ghost = current.map(x => {return x + index + (currentPosition % width)})
+        drawn = true
       }
       else{
-        drawn = true
+        index += width
+        ghost = current.map(x => {return x + index + (currentPosition % width)})
       }
     }
     ghost.forEach(i =>{squares[i].classList.add('outline')})
@@ -157,10 +159,11 @@ document.addEventListener('DOMContentLoaded', () => {
       nextRandom = Math.floor(Math.random() * theTetrominoes.length)
       current = theTetrominoes[random][currentRotation]
       currentPosition = 4
+      gameOver()
       draw()
       displayShape()
       addScore()
-      gameOver()
+      
       return true
     }
     return false
@@ -248,6 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //display the shape in the mini-grid display
   function displayShape() {
+    if(!gameStart) return;
     //remove any trace of a tetromino form the entire grid
     displaySquares.forEach(square => {
       square.classList.remove('tetromino')
