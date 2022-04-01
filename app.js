@@ -79,10 +79,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //draw the Tetromino
   function draw() {
+
+    //clear all outlined squares
+    squares.forEach(index => {if(index.classList.contains('outline')) index.classList.remove('outline')})
+
     current.forEach(index => {
       squares[currentPosition + index].classList.add('tetromino')
       squares[currentPosition + index].style.backgroundColor = colors[random]
     })
+
+    drawGhost()
   }
 
   //undraw the Tetromino
@@ -90,8 +96,23 @@ document.addEventListener('DOMContentLoaded', () => {
     current.forEach(index => {
       squares[currentPosition + index].classList.remove('tetromino')
       squares[currentPosition + index].style.backgroundColor = ''
-
     })
+  }
+
+  function drawGhost() {
+    let drawn = false
+    let index = 180
+    let ghost = current.map(x => {return x + index + (currentPosition % width)})
+    while(!drawn){
+      if(ghost.some(i => squares[i].classList.contains('taken'))){
+        index -= width
+        ghost = current.map(x => {return x + index + (currentPosition % width)})
+      }
+      else{
+        drawn = true
+      }
+    }
+    ghost.forEach(i =>{squares[i].classList.add('outline')})
   }
 
   //assign functions to keyCodes
