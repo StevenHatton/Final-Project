@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function drawGhost() {
     if(!gameStart) return;
     let drawn = false
-    let index = 0
+    let index = currentPosition - (currentPosition % width)
     let ghost = current.map(x => {return x + index + (currentPosition % width)})
     while(!drawn){
       if(ghost.some(i => squares[i].classList.contains('taken'))){
