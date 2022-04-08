@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
     "pink"
   ]
 
+  //gets and set the highscores
+  let highscores
+  if(localStorage.getItem("highscores") != null) highscores = JSON.parse(localStorage.getItem("highscores"));
+  else highscores = [];
+
   //The Tetrominoes
   const lTetromino = [
     [1, width+1, width*2+1, 2],
@@ -320,13 +325,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //game over
   function gameOver() {
-    if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-      scoreDisplay.innerHTML = 'end'
+    if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) { 
+      if(testscore()) scoreDisplay.innerHTML = score.toString() + " Highscore!";
+      else            scoreDisplay.innerHTML = score.toString() + " Game Over!";
       clearInterval(timerId)
       timerId = null
       nextRandom = null
-      gameStart = false
+      gameStart = false 
     }
+  }
+
+  //adds the score to highscores if the ending score was a highscore
+  function testscore(){
+    if(highscores.length < 5) {
+      highscores.push(score)
+      highscores.sort(function(a, b){return b - a})
+      localStorage.setItem('highscores', JSON.stringify(highscores))
+      return true
+    }
+    else if(score > highscores[highscores.length-1]){
+      highscores.push(score)
+      highscores.sort(function(a, b){return b - a})
+      highscores.pop()
+      localStorage.setItem('highscores', JSON.stringify(highscores))
+      return true
+    }
+    return false
   }
 
 })
