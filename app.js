@@ -183,6 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
       currentPosition +=1
     }
     draw()
+    freeze()
   }
 
   //move the tetromino right, unless is at the edge or there is a blockage
@@ -194,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
       currentPosition -=1
     }
     draw()
+    freeze()
   }
 
   
