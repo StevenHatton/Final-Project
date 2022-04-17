@@ -271,24 +271,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   //starts the game on the first press of the start button
-  startBtn.addEventListener('click', () => {
-    if(!gameStart) {
-      gameStart = true
-      score = 0
-      scoreDisplay.innerHTML = score
-      //randomly select a Tetromino and its first rotation
-      random = Math.floor(Math.random()*theTetrominoes.length)
-      current = theTetrominoes[random][currentRotation]
-      for(let i=0; i<200; i++){
-        if(squares[i].classList.contains('tetromino') || squares[i].classList.contains('taken')){
-          squares[i].classList.remove('taken')
-          squares[i].classList.remove('tetromino')
-          squares[i].style.backgroundColor = ''
+  if(startBtn){
+    startBtn.addEventListener('click', () => {
+      if(!gameStart) {
+        gameStart = true
+        score = 0
+        scoreDisplay.innerHTML = score
+        //randomly select a Tetromino and its first rotation
+        random = Math.floor(Math.random()*theTetrominoes.length)
+        current = theTetrominoes[random][currentRotation]
+        for(let i=0; i<200; i++){
+          if(squares[i].classList.contains('tetromino') || squares[i].classList.contains('taken')){
+            squares[i].classList.remove('taken')
+            squares[i].classList.remove('tetromino')
+            squares[i].style.backgroundColor = ''
+          }
         }
+        pause()
       }
-      pause()
-    }
-  })
+    })
+  }
 
   //pause or unpause the game
   function pause(){
