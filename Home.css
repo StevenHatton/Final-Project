@@ -23,8 +23,10 @@ h2 a {
     text-decoration: none;
 }
 body { 
-	color: #221811;
+	color: #ffffff;
 	font-family: Verdana, Arial, sans-serif;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
 }
 
 header { 
