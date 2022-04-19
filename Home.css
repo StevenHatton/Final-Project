@@ -2,10 +2,10 @@ h2 a:link {
 	color: #139cc5; 
 }
 h2 a:visited {
-	color: #0d4151; 
+	color: #ffffff; 
 }
 h2 a:hover {
-	color: #77b3c6; 
+	color: #8f8f8f; 
 }
 h2 { 
         font-weight: bold;
@@ -14,19 +14,26 @@ h2 {
         padding-top: 10px;
         float: left; 
         width: 200px; 
+		
+
 }
 h2 ul {
     list-style-type: none;
      padding-left: 0px;
 }
 h2 a {
-    text-decoration: none;
+    -webkit-text-stroke-width: 1px;
+  	-webkit-text-stroke-color: black;
+	  background-color: black;
+	  margin-left: auto;
+    margin-right: auto;
+    width: 8em
 }
-h2 { 
+body { 
 	color: #ffffff;
 	font-family: Verdana, Arial, sans-serif;
 	-webkit-text-stroke-width: 1px;
-	-webkit-text-stroke-color: black;
+  	-webkit-text-stroke-color: black;
 }
 
 header { 
