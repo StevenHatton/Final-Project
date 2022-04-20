@@ -64,6 +64,14 @@ font-weight: bold;
 text-align: center;
 }
 
+ol{
+	font-weight: bold;
+    font-size: 1.5em; 
+    padding-top: 10px;
+    float: left; 
+    width: 200px; 
+}
+
 body {
 	background-image: url("images/door.jpg");
 	background-color: #cccccc;
