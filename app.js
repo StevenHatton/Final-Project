@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let squares = Array.from(document.querySelectorAll('.grid div'))
   const scoreDisplay = document.querySelector('#score')
   const startBtn = document.querySelector('#start-button')
+  const scoreScreen = document.getElementById('scores')
   const width = 10
   let nextRandom = null
   let timerId
@@ -24,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let highscores
   if(localStorage.getItem("highscores") != null) highscores = JSON.parse(localStorage.getItem("highscores"));
   else highscores = [];
+
+  //update the scorescreen
+  if(scoreScreen) updateScores();
 
   //The Tetrominoes
   const lTetromino = [
@@ -357,4 +361,9 @@ document.addEventListener('DOMContentLoaded', () => {
     return false
   }
 
+  function updateScores(){
+    for(let i=0; i<highscores.length; i++){
+      document.getElementById("score-" + i).innerHTML = highscores[i]
+    }
+  }
 })
